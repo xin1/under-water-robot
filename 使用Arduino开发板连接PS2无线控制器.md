@@ -1,5 +1,29 @@
-# 通信
-首先安装PS2X的库，即文件PS2X_lib  
+# 通信功能
+## 功能简介
+索尼游戏控制器有12个对压力敏感的模拟键（4个方向键、4个操作键、十字、三角、圆形和方形，L1、L2、R1和R2）和5个数字键（MODE，START，SELECT， R3，L3）和2个模拟操纵杆。
+![image](https://github.com/xin1/under-water-robot/assets/81465751/ebefb834-0d53-4ec0-8590-60b1de4a59b0)
+
+无线控制器工作频率为2.4GHz，射程为10米。它还有一个用于发送和接收数据的光学指示器。该控制器仅需3节AAA电池供电（在某些情况下，它只需要2节AAA电池）。  
+## 电路连接
+PS2控制器接收器包括9个引脚：
+![image](https://github.com/xin1/under-water-robot/assets/81465751/fcbae24a-b0f9-4725-9248-db7b97f651b2)
+
+1. Data：主机线，用于向从站发送数据（MOSI）
+2. Command：从机线，用于向主站发送数据（MISO）
+3. Vibration：振动电机的电源; 7.2V至9V
+4. Ground：电路接地
+5. VCC：电源供电; 3.3伏
+6. Attention：CS或芯片选择引脚用于调用从机并准备连接
+7. Clock：相当于时钟的SCK引脚
+8. No Connection：没用
+9. Acknowledge：从控制器到PS2接收器的应答信号
+
+连接PS2控制器和Arduino
+为了使用PS2控制器，您需要将控制器的按键引入Arduino。然后根据您的项目为每个键选择适当的功能。
+![image](https://github.com/xin1/under-water-robot/assets/81465751/7b9d446d-b268-48d2-b9cb-212dae1651ee)
+
+## 代码
+首先安装PS2X的库，库里搜不到可以下载本文文件夹PS2X_lib  放到Arduino\libraries路径下
 以下代码可实现与PlayStation 2游戏手柄进行通信的功能。它包括配置控制器、读取按键状态、检测按键按下和释放事件以及读取摇杆的数值。
 ```
 #include <PS2X_lib.h>
